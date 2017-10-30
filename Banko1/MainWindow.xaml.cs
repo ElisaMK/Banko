@@ -94,11 +94,11 @@ namespace Banko1 {
 
         private void OpenSpilMappe_Click(object sender, RoutedEventArgs e) {
 
-            //OpenFileDialog opd = new OpenFileDialog();
-            //opd.Multiselect = true;
-            //opd.Filter = "Text filer (*.txt)|*.txt|Alle typer (*.*)|*.*";
-            //opd.InitialDirectory = path;
-            //Nullable<bool> result = opd.ShowDialog();
+            OpenFileDialog opd = new OpenFileDialog();
+            opd.Multiselect = true;
+            opd.Filter = "Text filer (*.txt)|*.txt|Alle typer (*.*)|*.*";
+            opd.InitialDirectory = path;
+            Nullable<bool> result = opd.ShowDialog();
             string tinge = "/23.10.2017.txt";
 
             Process.Start(path + tinge);
