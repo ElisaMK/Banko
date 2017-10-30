@@ -1,0 +1,1 @@
+Height="593.6" Width="748"  <= Størrelse på window

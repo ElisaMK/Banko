@@ -1,0 +1,10 @@
+        <DockPanel LastChildFill="True" Margin="0,0,0,10">
+            <Frame x:Name="bottomFrame" Content="Frame" DockPanel.Dock="Bottom" Height="184" Margin="0,0,0.2,0"/>
+
+            <Frame x:Name="leftWithNumbers" Content="Frame" DockPanel.Dock="Left" Width="272" Height="287" VerticalAlignment="Top"/>
+
+            <Frame x:Name="centerWithLifeNumber" Content="Frame" Width="250" Margin="0,0,0,0.2" />
+
+            <Frame x:Name="rightWithButtons" Content="Frame" DockPanel.Dock="Right"/>
+
+        </DockPanel>

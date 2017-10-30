@@ -1,0 +1,46 @@
+  
+  
+  
+  
+        private DispatcherTimer dispatcherTimer;
+  
+  
+  
+  
+  
+  //TODO Prøv at finde ud af om den går ind i listen og vælger et ny random tal hver gang, eller den kun tager et random tal og så tager rækken derfra. 
+        private void start_Click(object sender, RoutedEventArgs e) { // den er ikke nok random
+            try {
+                var test = sekunderTextBox.Text;
+                dispatcherTimer = new DispatcherTimer();
+                dispatcherTimer.Interval = TimeSpan.FromSeconds(Convert.ToDouble(test));
+                dispatcherTimer.Tick += NytTal;
+
+                dispatcherTimer.Start();
+
+                sekunderTextBox.IsEnabled = false;
+                start.Style = (Style)(this.Resources["DisableKnap"]);
+            } catch {
+                StopTal();
+                talLabel.Content = "\"";
+            }
+        }
+
+        private void pause_Click(object sender, RoutedEventArgs e) {
+            StopTal();
+        }
+
+
+		        internal void StopTal() {
+            dispatcherTimer.Stop();
+            
+            sekunderTextBox.IsEnabled = true;
+            start.Style = (Style)(this.Resources["Knapper"]);
+        }
+
+
+		//se tilbage
+		                start.Style = (Style)(this.Resources["DisableKnap"]);
+
+	//gå frem
+                start.Style = (Style)(this.Resources["Knapper"]);

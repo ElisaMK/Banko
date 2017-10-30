@@ -1,0 +1,254 @@
+﻿<Window x:Class="Banko1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Banko1"
+        mc:Ignorable="d"
+        Title="Banko" 
+        WindowState="Maximized"
+        WindowStyle="SingleBorderWindow" Width="1534.4" Height="841.2">
+
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+        <Style x:Key="Knap"
+               TargetType="{x:Type Button}" >
+            <Setter Property="Background" Value="DarkGray"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FFCBC7C7" ShadowDepth="1" BlurRadius="0"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderThickness="0"
+                        Background="{TemplateBinding Background}"
+                        CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="Gray"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="Knapper"
+               TargetType="{x:Type Button}" BasedOn="{StaticResource Knap}">
+            <Setter Property="Width" Value="117"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="IsEnabled" Value="True"/>
+
+        </Style>
+
+        <Style x:Key="PJSpilKnapper"
+               TargetType="{x:Type Button}" BasedOn="{StaticResource Knap}">
+            <Setter Property="Width" Value="122"/>
+            <Setter Property="Height" Value="33"/>
+            <Setter Property="FontSize" Value="15"/>
+        </Style>
+
+        <Style x:Key="PileKnapper" TargetType="{x:Type Button}" BasedOn="{StaticResource Knap}">
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#FFE2E2E2" ShadowDepth="1" BlurRadius="0"/>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Background" Value="LightGray"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Width" Value="38"/>
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Segoe MDL2 Assets"/>
+        </Style>
+
+        <Style x:Key="DisableKnap" TargetType="{x:Type Button}" BasedOn="{StaticResource Knap}">
+            <Setter Property="Background" Value="Gainsboro"/>
+            <Setter Property="Width" Value="117"/>
+            <Setter Property="Height" Value="46"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="IsEnabled" Value="False"/>
+        </Style>
+
+        <Style x:Key="overskriftLable"
+               TargetType="{x:Type Label}">
+            <Setter Property="Background" Value="Lavender"/>
+            <Setter Property="Height" Value="26"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,0.2">
+        <DockPanel LastChildFill="True" Margin="0,0,0,0.8" >
+
+            <Popup x:Name="øverstePopUp" AllowsTransparency="True" PopupAnimation="Fade" StaysOpen="False" Placement="Mouse">
+                <Label x:Name="øverstePopUpLabel" Content="Gemt" FontSize="20"/>
+            </Popup>
+
+            <Menu x:Name="menu" IsMainMenu="True" Height="26" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,0,1.2,0" FontSize="14"  >
+                <MenuItem Header="Spil">
+                    <MenuItem Header="Nyt Spil" HorizontalAlignment="Left" Width="139.2" Click="NytSpil_Click"/>
+                </MenuItem>
+
+                <MenuItem Header="Se spil log">
+                    <MenuItem Header="Åben Dagens" HorizontalAlignment="Left" Click="OpenDagensSpil_Click" />
+                    <MenuItem Header="Åben mappe" HorizontalAlignment="Left" Click="OpenSpilMappe_Click" />
+                </MenuItem>
+            </Menu>
+
+            <Expander x:Name="bottom" Header="Pulje- og Jackpot spil" DockPanel.Dock="Bottom" Margin="0,3,2.8,0" Background="PowderBlue" FontSize="15" IsExpanded="True">
+                <Grid x:Name="puljeTal" Margin="12,0,8.4,0" Height="288" VerticalAlignment="Top" Background="White">
+                    <Label x:Name="puljeTalHeader" Content="Pulje tal" Style="{StaticResource overskriftLable}" HorizontalAlignment="Left" Margin="91,10,0,0" Width="155" VerticalAlignment="Top" Height="41" />
+                    <ListBox x:Name="puljeListBox" BorderBrush="Gainsboro"  HorizontalAlignment="Left" Height="229" Margin="91,49,0,0" VerticalAlignment="Top" Width="155"/>
+                    <Button x:Name="PuljeSpil" Content="Pulje Spil" Style="{StaticResource PJSpilKnapper}" HorizontalAlignment="Left" Margin="251,76,0,0" VerticalAlignment="Top" Click="PuljeSpil_Click"/>
+
+                    <Label x:Name="jackPotTalHeader" Content="Jackpot tal" Style="{StaticResource overskriftLable}" Margin="0,10,381,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Right" Width="155" />
+                    <ListBox x:Name="jackpotListBox" BorderBrush="Gainsboro" Height="228" Margin="0,0,381,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="155"/>
+                    <Button x:Name="jackPotSpil" Content="JackPot Spil" Style="{StaticResource PJSpilKnapper}" Margin="0,76,254,0" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.503,0.5" Click="jackPotSpil_Click"/>
+
+                </Grid>
+            </Expander>
+
+            <Grid x:Name="leftWithNumbers" DockPanel.Dock="Left" Width="470" Margin="1,3.4,1,-1.4">
+                <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="407" Width="452" Margin="9,9,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="numen" Content="1" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numto" Content="2" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numtre" Content="3" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numfire" Content="4" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numfem" Content="5" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numseks" Content="6" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numsyv" Content="7" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numotte" Content="8" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numni" Content="9" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numti" Content="10" HorizontalContentAlignment="Center" FontSize="30" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,10,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="numelve" Content="11" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numtolv" Content="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numtretten" Content="13" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numfjorten" Content="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numfemten" Content="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numsejsten" Content="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numsytten" Content="17" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numatten" Content="18" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numnitten" Content="19" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numtyve" Content="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,55,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="numenogtyve" Content="21" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numtoogtyve" Content="22" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numtreogtyve" Content="23" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numfireogtyve" Content="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numfemogtyve" Content="25" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numseksogtyve" Content="26" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numsyvogtyve" Content="27" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numotteogtyve" Content="28" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numniogtyve" Content="29" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="numtredve" Content="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,100,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="enogtredve" Content="31" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="toogtredve" Content="32" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="treogtredve" Content="33" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="fireogtredve" Content="34" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="femogtredve" Content="35" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="seksogtredve" Content="36" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="syvogtredve" Content="37" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="otteogtredve" Content="38" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="niogtredve" Content="39" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="fyrre" Content="40" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,145,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="enogfyrre" Content="41" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="toogfyrre" Content="42" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="treogfyrre" Content="43" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="fireogfyrre" Content="44" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="femogfyrre" Content="45" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="seksogfyrre" Content="46" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="syvogfyrre" Content="47" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="otteogfyrre" Content="48" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="niogfyrre" Content="49" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="halvtreds" Content="50" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,190,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="enoghalvtreds" Content="51" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="tooghalvtreds" Content="52" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="treoghalvtreds" Content="53" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="fireoghalvtreds" Content="54" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="femoghalvtreds" Content="55" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="seksoghalvtreds" Content="56" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="syvoghalvtreds" Content="57" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="otteoghalvtreds" Content="58" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="nioghalvtreds" Content="59" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="trids" Content="60" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,235,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="enogtrids" Content="61" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="toogtrids" Content="62" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="treogtrids" Content="63" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="fireogtrids" Content="64" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="femogtrids" Content="65" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="seksogtrids" Content="66" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="syvogtrids" Content="67" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="otteogtrids" Content="68" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="niogtrids" Content="69" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="halvfjerds" Content="70" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,280,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="enoghalvfjerds" Content="71" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="tooghalvfjerds" Content="72" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="treoghalvfjerds" Content="73" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="fireoghalvfjerds" Content="74" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="femoghalvfjerds" Content="75" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="seksoghalvfjerds" Content="76" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="syvoghalvfjerds" Content="77" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="otteoghalvfjerds" Content="78" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="nioghalvfjerds" Content="79" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="firs" Content="80" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,325,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+                <Label x:Name="enogfirs" Content="81" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="10,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="toogfirs" Content="82" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="55,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="treogfirs" Content="83" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="100,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="fireogfirs" Content="84" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="145,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="femogfirs" Content="85" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="190,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="seksogfirs" Content="86" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="235,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="syvogfirs" Content="87" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="280,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="otteogfirs" Content="88" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="325,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="niogfirs" Content="89" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="370,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+                <Label x:Name="halvfems" Content="90" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" HorizontalAlignment="Left" Margin="415,370,0,0" VerticalAlignment="Top" Width="45" Height="45"/>
+
+            </Grid>
+
+
+            <Grid x:Name="rightWithButtons" DockPanel.Dock="Right" Width="335" Margin="0,3.4,0,1">
+                <Border BorderBrush="Gainsboro" BorderThickness="1" Margin="0,1,9.8,2.6"/>
+                <Label x:Name="banko_overskrift" Content="BANKO" FontSize="30" Margin="0,1,9.8,0" VerticalAlignment="Top" Style="{StaticResource overskriftLable}" Height="55"/>
+
+                <Button x:Name="FuldFortrydKnap" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,177,208.8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="46" Click="FuldFortryd_Click"/>
+                <Button x:Name="rowFortrydKnap" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,92,208.8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="46" Click="rowFortryd_Click"/>
+
+                <Button x:Name="banko" Content="Række" Style="{StaticResource Knapper}" Click="Række_Click" VerticalAlignment="Top" Margin="0,92,97,0" HorizontalAlignment="Right"/>
+                <Button x:Name="fuldPladeKnap" Content="Fuldplade" Style="{StaticResource Knapper}" Margin="0,177,97,0" VerticalAlignment="Top" Click="fuldPlade_Click" HorizontalAlignment="Right"/>
+
+                <Popup x:Name="bankoPopUp" AllowsTransparency="True" StaysOpen="False" PlacementRectangle="5,325,316,60" PopupAnimation="Fade" Margin="0,56,9.8,10.6">
+                    <TextBox x:Name="tekstBoxPopUp" Background="LightSkyBlue" Text="Så er der Banko"  IsReadOnly="True" Width="316" HorizontalContentAlignment="Center" FontSize="30" Height="50" RenderTransformOrigin="0.5,0.5"/>
+                </Popup>
+
+            </Grid>
+
+
+            <Grid x:Name="centerWithLifeNumber" Margin="1,4,1,1">
+                <Label x:Name="talLabel" Content=" " BorderBrush="Black" BorderThickness="5" Margin="0,23,267,0"
+                   Background="White" Padding="1" FontSize="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="238" VerticalAlignment="Top" HorizontalAlignment="Right" Width="228"/>
+                <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NytTal" Visibility="{Binding Path= IsChecked, ElementName=skriftManuelRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,280,323,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Right"/>
+                <Button x:Name="seTilbage" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,216,451,0" VerticalAlignment="Top" Click="SeTilbage_Click" HorizontalAlignment="Right"/>
+                <Button x:Name="frem" Content="&#xE10D;" Style="{StaticResource PileKnapper}" Margin="0,216,274,0" VerticalAlignment="Top" Click="frem_Click" HorizontalAlignment="Right"/>
+
+            </Grid>
+
+        </DockPanel>
+
+    </Grid>
+</Window>

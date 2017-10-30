@@ -1,0 +1,32 @@
+  
+  
+        private DispatcherTimer dispatcherTimer;
+  
+   private void button_Click(object sender, RoutedEventArgs e) {            
+            //  DispatcherTimer setup
+            dispatcherTimer = new DispatcherTimer();
+            dispatcherTimer.Tick += new EventHandler(dispatcherTimer_Tick);
+            dispatcherTimer.Interval = new TimeSpan(0, 0, 3);
+            dispatcherTimer.Start();
+        }
+
+        private void dispatcherTimer_Tick(object sender, EventArgs e) {
+            Random rnd = new Random();
+
+            int Value = rnd.Next(1, talList.Count);
+            talLabel.Content = talList[Value];
+
+
+            foreach (UIElement ele in leftWithNumbers.Children) {
+                Label midlertidigLabel = null;
+                if (ele.GetType() == typeof(Label)) {
+                    Label lablesITaltabel = (Label)ele;
+
+                    if (Convert.ToInt32(lablesITaltabel.Content) == talList[Value]) {
+                        midlertidigLabel = lablesITaltabel;
+                        midlertidigLabel.Foreground = Brushes.Black;
+                    }
+                }
+            }
+            talList.RemoveAt(Value);
+        }
