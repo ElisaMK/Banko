@@ -56,8 +56,9 @@ namespace Banko1 {
         private void Række_Click(object sender, RoutedEventArgs e) { // der kan være en fejl at der blev trykket på banko
             try {
                 if (!puljeList.Contains(Convert.ToInt32(talLabel.Content))) {
-                    bankoPopUp.IsOpen = true;
+
                     tekstBoxPopUp.Text = "Banko på række";
+                    ShowPopUp();
                     puljeList.Add(Convert.ToInt32(talLabel.Content));
                 }
 
@@ -70,13 +71,13 @@ namespace Banko1 {
         private void fuldPlade_Click(object sender, RoutedEventArgs e) { // der kan være en fejl at der blev trykket på banko
             try {
                 if (!puljeList.Contains(Convert.ToInt32(talLabel.Content))) {
-                    bankoPopUp.IsOpen = true;
                     tekstBoxPopUp.Text = "Banko på fuldplade";
+                    PopUp.IsOpen = true;
                     puljeList.Add(Convert.ToInt32(talLabel.Content));
                 }
                 if (!jackpotList.Contains(Convert.ToInt32(talLabel.Content))) {
-                    bankoPopUp.IsOpen = true;
                     tekstBoxPopUp.Text = "Banko på fuldplade";
+                    ShowPopUp();
                     jackpotList.Add(Convert.ToInt32(talLabel.Content));
                 }
 
@@ -86,10 +87,9 @@ namespace Banko1 {
         }
 
         private void NytSpil_Click(object sender, RoutedEventArgs e) {
-            øverstePopUpLabel.Content = "Spil Gemt";
-            øverstePopUp.IsOpen = true;
+            tekstBoxPopUp.Text = "Spil Gemt";
+            ShowPopUp();
             NytSpil();
-            øverstePopUp.IsOpen = false;
         }
 
         private void OpenSpilMappe_Click(object sender, RoutedEventArgs e) {
@@ -99,9 +99,10 @@ namespace Banko1 {
             opd.Filter = "Text filer (*.txt)|*.txt|Alle typer (*.*)|*.*";
             opd.InitialDirectory = path;
             Nullable<bool> result = opd.ShowDialog();
-            string tinge = "/23.10.2017.txt";
 
-            Process.Start(path + tinge);
+            if(result == true) {
+                Process.Start(opd.FileName);
+            }
 
         }
         private void OpenDagensSpil_Click(object sender, RoutedEventArgs e) {
@@ -111,8 +112,8 @@ namespace Banko1 {
                 Process.Start(path + filNavn);
 
             } catch{
-                øverstePopUpLabel.Content = "Der er ingen filer fra i dag";
-                øverstePopUp.IsOpen = true;
+                tekstBoxPopUp.Text = "Der er ingen filer fra i dag";
+                ShowPopUp();
             }
 
         }
@@ -290,6 +291,24 @@ namespace Banko1 {
             brugteTalList.Clear();
         }
 
+
+        // popUp metoder
+
+        public void ShowPopUp() {
+            PopUp.IsOpen = true;
+
+            DispatcherTimer timer = new DispatcherTimer() {
+                Interval = TimeSpan.FromSeconds(2)
+            };
+
+            timer.Tick += delegate (object sender, EventArgs e)
+            {
+                ((DispatcherTimer)timer).Stop();
+                if (PopUp.IsOpen) PopUp.IsOpen = false;
+            };
+
+            timer.Start();
+        }
 
     }
 }

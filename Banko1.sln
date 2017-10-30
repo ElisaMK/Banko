@@ -6,16 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banko1", "Banko1\Banko1.csproj", "{6DBD0E2E-5250-443E-9022-C720DBCA7EBF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5A94FDB6-E9CD-41FC-BFB2-9BFFE205CE6E}"
-	ProjectSection(SolutionItems) = preProject
-		file dialog.txt = file dialog.txt
-		General.txt = General.txt
-		Mainview.txt = Mainview.txt
-		MainWindow.txt = MainWindow.txt
-		MainWindowTxt.txt = MainWindowTxt.txt
-		Program.cs = Program.cs
-		Se hvad en liste indeholder.txt = Se hvad en liste indeholder.txt
-		TådeEksemple.txt = TådeEksemple.txt
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prøve filer - page", "Prøve filer - page", "{53448539-D5B4-42BA-A0E4-DC0167A19C18}"
 	ProjectSection(SolutionItems) = preProject
@@ -29,6 +19,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "automatisk tal", "automatis
 	ProjectSection(SolutionItems) = preProject
 		grafisk.txt = grafisk.txt
 		Metoder.txt = Metoder.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Txt filer", "Txt filer", "{21995420-D68E-4FFD-8C39-24B0BAD39112}"
+	ProjectSection(SolutionItems) = preProject
+		file dialog.txt = file dialog.txt
+		General.txt = General.txt
+		Mainview.txt = Mainview.txt
+		MainWindow.txt = MainWindow.txt
+		MainWindowTxt.txt = MainWindowTxt.txt
+		Program.cs = Program.cs
+		Se hvad en liste indeholder.txt = Se hvad en liste indeholder.txt
+		TådeEksemple.txt = TådeEksemple.txt
 	EndProjectSection
 EndProject
 Global

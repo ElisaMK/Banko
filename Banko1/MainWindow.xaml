@@ -90,17 +90,13 @@
     <Grid Margin="0,0,0,0.2">
         <DockPanel LastChildFill="True" Margin="0,0,0,0.8" >
 
-            <Popup x:Name="øverstePopUp" AllowsTransparency="True" PopupAnimation="Fade" StaysOpen="False" Placement="Mouse">
-                <Label x:Name="øverstePopUpLabel" Content="Gemt" FontSize="20"/>
-            </Popup>
-
             <Menu x:Name="menu" IsMainMenu="True" Height="26" VerticalAlignment="Top" DockPanel.Dock="Top" Margin="0,0,1.2,0" FontSize="14"  >
                 <MenuItem Header="Spil">
                     <MenuItem Header="Nyt Spil" HorizontalAlignment="Left" Width="139.2" Click="NytSpil_Click"/>
                 </MenuItem>
 
                 <MenuItem Header="Se spil log">
-                    <MenuItem Header="Åben Dagens" HorizontalAlignment="Left" Click="OpenDagensSpil_Click" />
+                    <MenuItem Header="Åben dagens spil" HorizontalAlignment="Left" Click="OpenDagensSpil_Click" />
                     <MenuItem Header="Åben mappe" HorizontalAlignment="Left" Click="OpenSpilMappe_Click" />
                 </MenuItem>
             </Menu>
@@ -232,9 +228,6 @@
                 <Button x:Name="banko" Content="Række" Style="{StaticResource Knapper}" Click="Række_Click" VerticalAlignment="Top" Margin="0,92,97,0" HorizontalAlignment="Right"/>
                 <Button x:Name="fuldPladeKnap" Content="Fuldplade" Style="{StaticResource Knapper}" Margin="0,177,97,0" VerticalAlignment="Top" Click="fuldPlade_Click" HorizontalAlignment="Right"/>
 
-                <Popup x:Name="bankoPopUp" AllowsTransparency="True" StaysOpen="False" PlacementRectangle="5,325,316,60" PopupAnimation="Fade" Margin="0,56,9.8,10.6">
-                    <TextBox x:Name="tekstBoxPopUp" Background="LightSkyBlue" Text="Så er der Banko"  IsReadOnly="True" Width="316" HorizontalContentAlignment="Center" FontSize="30" Height="50" RenderTransformOrigin="0.5,0.5"/>
-                </Popup>
 
             </Grid>
 
@@ -246,6 +239,9 @@
                 <Button x:Name="seTilbage" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,216,451,0" VerticalAlignment="Top" Click="SeTilbage_Click" HorizontalAlignment="Right"/>
                 <Button x:Name="frem" Content="&#xE10D;" Style="{StaticResource PileKnapper}" Margin="0,216,274,0" VerticalAlignment="Top" Click="frem_Click" HorizontalAlignment="Right"/>
 
+                <Popup x:Name="PopUp" PlacementRectangle="25,20,30,50" Placement="Mouse" AllowsTransparency="True" StaysOpen="False" PopupAnimation="Fade" Margin="10,10,9.8,10.4">
+                    <TextBox x:Name="tekstBoxPopUp" IsReadOnly="True" TextWrapping="Wrap" HorizontalContentAlignment="Center" FontSize="30"/>
+                </Popup>
             </Grid>
 
         </DockPanel>
