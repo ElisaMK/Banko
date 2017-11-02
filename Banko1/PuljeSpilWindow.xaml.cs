@@ -27,7 +27,8 @@ namespace Banko1 {
         public PuljeSpilWindow() {
             InitializeComponent();
 
-            TalTilHvid();
+
+             TalTilHvid();
         }
 
         public List<int> windowPuljeSpilList {
@@ -98,7 +99,7 @@ namespace Banko1 {
             talLabel.Content = talList[Value];
             brugteTalList.Add(talList[Value]);
 
-            foreach (UIElement ele in leftWithNumbers.Children) {
+            foreach (UIElement ele in gridForTal.Children) {
                 Label midlertidigLabel = null;
                 if (ele.GetType() == typeof(Label)) {
                     Label lablesITaltabel = (Label)ele;
@@ -120,7 +121,7 @@ namespace Banko1 {
             }
             //laver de tal der er i pulje røde
             for (int PsT = 0; PsT < windowPuljeSpilList.Count; PsT++) {
-                foreach (UIElement ele in leftWithNumbers.Children) {
+                foreach (UIElement ele in gridForTal.Children) {
                     Label midlertidigLabel = null;
                     if (ele.GetType() == typeof(Label)) {
                         Label lablesITaltabel = (Label)ele;
@@ -136,13 +137,10 @@ namespace Banko1 {
         }
 
         internal void TalTilHvid() {
-            foreach (UIElement ele in leftWithNumbers.Children) {
+            foreach (UIElement ele in gridForTal.Children) {
                 if (ele.GetType() == typeof(Label)) {
                     Label lbl = (Label)ele;
-                    lbl.Foreground = Brushes.White;
-                    lbl.BorderThickness = new Thickness(1);
-                    lbl.FontSize = 25;
-                    lbl.BorderBrush = Brushes.Gainsboro;
+                    lbl.Style = (Style)(this.Resources["talLabelsStyle"]);
                 }
             }
         }

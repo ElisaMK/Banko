@@ -90,7 +90,6 @@ namespace Banko1 {
             tekstBoxPopUp.Text = "Spil Gemt";
             ShowPopUp();
             NytSpil();
-
         }
 
         private void OpenSpilMappe_Click(object sender, RoutedEventArgs e) {
@@ -106,6 +105,7 @@ namespace Banko1 {
             }
 
         }
+
         private void OpenDagensSpil_Click(object sender, RoutedEventArgs e) {
             try {
                 string filNavn = "/" + dato + ".txt";
@@ -139,7 +139,36 @@ namespace Banko1 {
 
             NytSpil();
         }
-        
+
+        internal void NytTal(object sender, EventArgs e) {//
+            try {
+                rnd = new Random();
+                int Value = rnd.Next(1, talList.Count);
+                talLabel.Content = talList[Value];
+                brugteTalList.Add(talList[Value]);
+
+
+                foreach (UIElement ele in leftWithNumbers.Children) {
+                    Label midlertidigLabel = null;
+                    if (ele.GetType() == typeof(Label)) {
+                        Label lablesITaltabel = (Label)ele;
+
+                        if (Convert.ToInt32(lablesITaltabel.Content) == talList[Value]) {
+                            midlertidigLabel = lablesITaltabel;
+                            midlertidigLabel.Foreground = Brushes.Black;
+                        }
+                    }
+                }
+
+                talList.RemoveAt(Value);
+
+                brugteListStatusLBL.Content = brugteTalList.Count();
+
+            } catch {
+                talLabel.Content = "\"";
+            }
+        }
+
 
         //Frem og tilbage knapper
         private void SeTilbage_Click(object sender, RoutedEventArgs e) {
@@ -201,6 +230,7 @@ namespace Banko1 {
             }
         }
 
+
         //Clear knapper
         private void clearBTNJackpot_Click(object sender, RoutedEventArgs e) {
             jackpotList.Clear();
@@ -212,34 +242,7 @@ namespace Banko1 {
 
 
         //metoder til det bagvedlæggende
-        internal void NytTal(object sender, EventArgs e) {//
-            try {
-                rnd = new Random();
-                int Value = rnd.Next(1, talList.Count);
-                talLabel.Content = talList[Value];
-                brugteTalList.Add(talList[Value]);
 
-
-                foreach (UIElement ele in leftWithNumbers.Children) {
-                    Label midlertidigLabel = null;
-                    if (ele.GetType() == typeof(Label)) {
-                        Label lablesITaltabel = (Label)ele;
-
-                        if (Convert.ToInt32(lablesITaltabel.Content) == talList[Value]) {
-                            midlertidigLabel = lablesITaltabel;
-                            midlertidigLabel.Foreground = Brushes.Black;
-                        }
-                    }
-                }
-
-                talList.RemoveAt(Value);
-
-                brugteListStatusLBL.Content = brugteTalList.Count();
-
-            } catch {
-                talLabel.Content = "\"";
-            }
-        }
 
         internal void TalListeGenerator() {
             for (int i = 1; i < 91; i++) {
@@ -273,13 +276,10 @@ namespace Banko1 {
         }
 
         internal void TalTilHvid() {
-            foreach (UIElement ele in leftWithNumbers.Children) {
+            foreach (UIElement ele in gridForTal.Children) {
                 if (ele.GetType() == typeof(Label)) {
                     Label lbl = (Label)ele;
-                    lbl.Foreground = Brushes.White;
-                    lbl.BorderThickness = new Thickness(1);
-                    lbl.FontSize = 25;
-                    lbl.BorderBrush = Brushes.Gainsboro;
+                    lbl.Style = (Style)(this.Resources["talLabelsStyle"]);
                 }
             }
         }
@@ -294,7 +294,7 @@ namespace Banko1 {
 
             brugteTalList.Clear();
 
-            antalSpilNrLBL.Content = antalSpil;
+            antalSpilNrLBL.Content = antalSpil+1;
         }
 
 
