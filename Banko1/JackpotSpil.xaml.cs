@@ -23,8 +23,13 @@ namespace Banko1 {
 
         public JackpotSpil() {
             InitializeComponent();
+
             TalTilHvid();
+
+            TalListeGenerator();
+
         }
+
         public List<int> windowJackPotSpilList {
             get;
             set;
@@ -38,20 +43,6 @@ namespace Banko1 {
             } catch {
                 talLabel.Content = "\"";
             }
-        }
-
-        private void startPuljeSpil_Click(object sender, RoutedEventArgs e) {
-            TalListeGenerator();
-            StringBuilder builder = new StringBuilder();
-
-            foreach (int str in talList) {
-                builder.Append(str.ToString()).AppendLine();
-            }
-            textBox.Text = builder.ToString();
-
-            startJackpotSpilKnap.Visibility = Visibility.Hidden;
-
-
         }
 
 
@@ -117,23 +108,7 @@ namespace Banko1 {
 
         internal void TalListeGenerator() {
             for (int i = 0; i < 91; i++) {
-                if (!windowJackPotSpilList.Contains(i)) {
-                    talList.Add(i);
-                }
-            }
-            //laver de tal der er i pulje røde
-            for (int PsT = 0; PsT < windowJackPotSpilList.Count; PsT++) {
-                foreach (UIElement ele in leftWithNumbers.Children) {
-                    Label midlertidigLabel = null;
-                    if (ele.GetType() == typeof(Label)) {
-                        Label lablesITaltabel = (Label)ele;
-
-                        if (Convert.ToInt32(lablesITaltabel.Content) == windowJackPotSpilList[PsT]) {
-                            midlertidigLabel = lablesITaltabel;
-                            midlertidigLabel.Foreground = Brushes.Red;
-                        }
-                    }
-                }
+                talList.Add(i);
             }
 
         }

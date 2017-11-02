@@ -90,6 +90,7 @@ namespace Banko1 {
             tekstBoxPopUp.Text = "Spil Gemt";
             ShowPopUp();
             NytSpil();
+
         }
 
         private void OpenSpilMappe_Click(object sender, RoutedEventArgs e) {
@@ -129,22 +130,13 @@ namespace Banko1 {
             pSWin.windowPuljeSpilList = allePuljetal;
             pSWin.Show();
 
-            puljeList.Clear();
             NytSpil();
         }
 
         private void jackPotSpil_Click(object sender, RoutedEventArgs e) {
-            List<int> alleJackpottal = new List<int>();
-
-            for (int opl = 0; opl < jackpotList.Count; opl++) {
-                alleJackpottal.Add(jackpotList[opl]);
-            }
-
             JackpotSpil jSWin = new JackpotSpil();
-            jSWin.windowJackPotSpilList = alleJackpottal;
             jSWin.Show();
 
-            jackpotList.Clear();
             NytSpil();
         }
         
@@ -209,6 +201,15 @@ namespace Banko1 {
             }
         }
 
+        //Clear knapper
+        private void clearBTNJackpot_Click(object sender, RoutedEventArgs e) {
+            jackpotList.Clear();
+        }
+
+        private void clearBTNPulje_Click(object sender, RoutedEventArgs e) {
+            puljeList.Clear();
+        }
+
 
         //metoder til det bagvedlæggende
         internal void NytTal(object sender, EventArgs e) {//
@@ -230,7 +231,10 @@ namespace Banko1 {
                         }
                     }
                 }
+
                 talList.RemoveAt(Value);
+
+                brugteListStatusLBL.Content = brugteTalList.Count();
 
             } catch {
                 talLabel.Content = "\"";
@@ -238,7 +242,7 @@ namespace Banko1 {
         }
 
         internal void TalListeGenerator() {
-            for (int i = 0; i < 91; i++) {
+            for (int i = 1; i < 91; i++) {
                 talList.Add(i);
             }
 
@@ -289,6 +293,8 @@ namespace Banko1 {
             talLabel.Content = " ";
 
             brugteTalList.Clear();
+
+            antalSpilNrLBL.Content = antalSpil;
         }
 
 
@@ -309,6 +315,7 @@ namespace Banko1 {
 
             timer.Start();
         }
+
 
     }
 }

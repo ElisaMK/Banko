@@ -185,21 +185,15 @@
 
             </Grid>
 
-            <Grid x:Name="centerWithLifeNumber" Width="376" Margin="1,4,1,0.4">
+            <Grid x:Name="centerWithLifeNumber" DockPanel.Dock="Right"  Width="376" Margin="1,4,1,0.4">
                 <Label x:Name="talLabel" Content=" " BorderBrush="Black" BorderThickness="5" Margin="73,35,75,0"
                    Background="White" Padding="1" FontSize="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="238" VerticalAlignment="Top"/>
                 <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NyTal_Click" Margin="130,297,129,0" RenderTransformOrigin="0.603,0.552" Width="Auto" />
                 <Button x:Name="seTilbage" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="79,229,0,0" VerticalAlignment="Top" Click="SeTilbage_Click" HorizontalAlignment="Left"/>
                 <Button x:Name="frem" Content="&#xE10D;" Style="{StaticResource PileKnapper}" Margin="257,229,0,0" VerticalAlignment="Top" Click="frem_Click" HorizontalAlignment="Left"/>
-                <Button x:Name="startJackpotSpilKnap" Content="Start Jackpot spil" Style="{StaticResource Knapper}" FontSize="29" Margin="67,128,67,0" VerticalAlignment="Top" Click="startPuljeSpil_Click" Width="Auto" Height="57"/>
 
             </Grid>
 
-            <Grid x:Name="rightWithButtons" DockPanel.Dock="Right" Width="auto" Margin="0,3.2,0,1.2">
-                <Border BorderBrush="Gainsboro" BorderThickness="1" Margin="0,0,9.8,2.6"/>
-                <Label x:Name="banko_overskrift" Content="BANKO" FontSize="30" Margin="0,1,9.8,0" VerticalAlignment="Top" Style="{DynamicResource overskriftLable}" Height="55"/>
-                <TextBox x:Name="textBox" TextWrapping="Wrap" Text="TextBox" Margin="30,61,59.2,57.8"/>
-            </Grid>
         </DockPanel>
 
     </Grid>

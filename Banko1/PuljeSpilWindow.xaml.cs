@@ -47,16 +47,8 @@ namespace Banko1 {
 
         private void startPuljeSpil_Click(object sender, RoutedEventArgs e) {
             TalListeGenerator();
-            StringBuilder builder = new StringBuilder();
 
-            foreach (int str in talList) {
-                builder.Append(str.ToString()).AppendLine();
-            }
-            textBox.Text = builder.ToString();
-
-            startPuljeSpilKnap.Visibility = Visibility.Hidden;
-
-
+            startPuljeSpilKnap.Visibility = Visibility.Collapsed;
         }
 
 
@@ -121,7 +113,7 @@ namespace Banko1 {
         }
 
         internal void TalListeGenerator() {
-            for (int i = 0; i < 91; i++) {
+            for (int i = 1; i < 91; i++) {
                 if (!windowPuljeSpilList.Contains(i)) {
                     talList.Add(i);
                 }

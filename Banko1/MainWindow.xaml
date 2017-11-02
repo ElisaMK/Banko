@@ -103,14 +103,18 @@
 
             <Expander x:Name="bottom" Header="Pulje- og Jackpot spil" DockPanel.Dock="Bottom" Margin="0,3,2.8,0" Background="PowderBlue" FontSize="15" IsExpanded="True">
                 <Grid x:Name="puljeTal" Margin="12,0,8.4,0" Height="288" VerticalAlignment="Top" Background="White">
-                    <Label x:Name="puljeTalHeader" Content="Pulje tal" Style="{StaticResource overskriftLable}" HorizontalAlignment="Left" Margin="91,10,0,0" Width="155" VerticalAlignment="Top" Height="41" />
-                    <ListBox x:Name="puljeListBox" BorderBrush="Gainsboro"  HorizontalAlignment="Left" Height="229" Margin="91,49,0,0" VerticalAlignment="Top" Width="155"/>
-                    <Button x:Name="PuljeSpil" Content="Pulje Spil" Style="{StaticResource PJSpilKnapper}" HorizontalAlignment="Left" Margin="251,76,0,0" VerticalAlignment="Top" Click="PuljeSpil_Click"/>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label x:Name="puljeTalHeader" Content="Pulje tal" Style="{StaticResource overskriftLable}" HorizontalAlignment="Left" Margin="536,10,0,0" Width="155" VerticalAlignment="Top" Height="41" />
+                    <ListBox x:Name="puljeListBox" BorderBrush="Gainsboro" FontSize="20" HorizontalAlignment="Left" Height="229" Margin="536,49,0,0" VerticalAlignment="Top" Width="155"/>
+                    <Button x:Name="PuljeSpil" Content="Pulje Spil" Style="{StaticResource PJSpilKnapper}" HorizontalAlignment="Left" Margin="696,76,0,0" VerticalAlignment="Top" Click="PuljeSpil_Click"/>
+                    <Button x:Name="clearBTNPulje" Content="Clear" Style="{StaticResource PJSpilKnapper}" HorizontalAlignment="Left" Margin="616,245,0,0" VerticalAlignment="Top" Width="75" Click="clearBTNPulje_Click"/>
 
-                    <Label x:Name="jackPotTalHeader" Content="Jackpot tal" Style="{StaticResource overskriftLable}" Margin="0,10,381,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Right" Width="155" />
-                    <ListBox x:Name="jackpotListBox" BorderBrush="Gainsboro" Height="228" Margin="0,0,381,10" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="155"/>
-                    <Button x:Name="jackPotSpil" Content="JackPot Spil" Style="{StaticResource PJSpilKnapper}" Margin="0,76,254,0" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.503,0.5" Click="jackPotSpil_Click"/>
-
+                    <Label x:Name="jackPotTalHeader" Content="Jackpot tal" Style="{StaticResource overskriftLable}" Margin="125,10,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="155" />
+                    <ListBox x:Name="jackpotListBox" BorderBrush="Gainsboro" Height="228" FontSize="20" Margin="125,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="155"/>
+                    <Button x:Name="jackPotSpil" Content="JackPot Spil" Style="{StaticResource PJSpilKnapper}" Margin="285,76,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.503,0.5" Click="jackPotSpil_Click"/>
+                    <Button x:Name="clearBTNJackpot" Content="Clear" Style="{StaticResource PJSpilKnapper}" Margin="205,245,0,0" VerticalAlignment="Top" Width="75" Click="clearBTNJackpot_Click" HorizontalAlignment="Left"/>
                 </Grid>
             </Expander>
 
@@ -227,21 +231,24 @@
 
                 <Button x:Name="banko" Content="Række" Style="{StaticResource Knapper}" Click="Række_Click" VerticalAlignment="Top" Margin="0,92,97,0" HorizontalAlignment="Right"/>
                 <Button x:Name="fuldPladeKnap" Content="Fuldplade" Style="{StaticResource Knapper}" Margin="0,177,97,0" VerticalAlignment="Top" Click="fuldPlade_Click" HorizontalAlignment="Right"/>
-
-
             </Grid>
 
 
-            <Grid x:Name="centerWithLifeNumber" Margin="1,4,1,1">
+            <Grid x:Name="centerWithLifeNumber" Margin="1,4.4,1,1">
                 <Label x:Name="talLabel" Content=" " BorderBrush="Black" BorderThickness="5" Margin="0,23,267,0"
                    Background="White" Padding="1" FontSize="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="238" VerticalAlignment="Top" HorizontalAlignment="Right" Width="228"/>
                 <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NytTal" Visibility="{Binding Path= IsChecked, ElementName=skriftManuelRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,280,323,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Right"/>
                 <Button x:Name="seTilbage" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,216,451,0" VerticalAlignment="Top" Click="SeTilbage_Click" HorizontalAlignment="Right"/>
                 <Button x:Name="frem" Content="&#xE10D;" Style="{StaticResource PileKnapper}" Margin="0,216,274,0" VerticalAlignment="Top" Click="frem_Click" HorizontalAlignment="Right"/>
+                <Button x:Name="nytSpilKnap" Content="Nyt Spil" Style="{DynamicResource Knapper}" HorizontalAlignment="Left" Margin="12,53,0,0" VerticalAlignment="Top" Width="117" Click="NytSpil_Click"/>
 
                 <Popup x:Name="PopUp" PlacementRectangle="25,20,30,50" Placement="Mouse" AllowsTransparency="True" StaysOpen="False" PopupAnimation="Fade" Margin="10,10,9.8,10.4">
                     <TextBox x:Name="tekstBoxPopUp" IsReadOnly="True" TextWrapping="Wrap" HorizontalContentAlignment="Center" FontSize="30"/>
                 </Popup>
+                <Label x:Name="antalSpilLBL" Content="Spil nr.:" Style="{StaticResource overskriftLable}" Margin="12,104,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="82"/>
+                <Label x:Name="antalSpilNrLBL" Content=" " Style="{StaticResource overskriftLable}" HorizontalContentAlignment="Left" Margin="92,104,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="83"/>
+                <Label x:Name="brugteTalLBL" Content="Opråbte tal:" Style="{StaticResource overskriftLable}" Margin="12,150,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="123"/>
+                <Label x:Name="brugteListStatusLBL" Content=" " HorizontalContentAlignment="Left" Style="{StaticResource overskriftLable}" Margin="133,150,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
             </Grid>
 
         </DockPanel>
