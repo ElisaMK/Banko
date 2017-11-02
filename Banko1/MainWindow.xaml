@@ -127,7 +127,7 @@
                 </Grid>
             </Expander>
 
-            <Grid x:Name="leftWithNumbers" DockPanel.Dock="Left"  Width="489" Margin="1,3,1,-1.8">
+            <Grid x:Name="leftWithNumbers" DockPanel.Dock="Left"  Width="495" Margin="1,3.4,1,-2">
                 <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,0,10">
                     <Grid x:Name="gridForTal">
                         <Grid.RowDefinitions >
@@ -275,15 +275,15 @@
                 <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NytTal" Visibility="{Binding Path= IsChecked, ElementName=skriftManuelRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,280,323,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Right"/>
                 <Button x:Name="seTilbage" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,216,451,0" VerticalAlignment="Top" Click="SeTilbage_Click" HorizontalAlignment="Right"/>
                 <Button x:Name="frem" Content="&#xE10D;" Style="{StaticResource PileKnapper}" Margin="0,216,274,0" VerticalAlignment="Top" Click="frem_Click" HorizontalAlignment="Right"/>
-                <Button x:Name="nytSpilKnap" Content="Nyt Spil" Style="{DynamicResource Knapper}" HorizontalAlignment="Left" Margin="12,53,0,0" VerticalAlignment="Top" Width="117" Click="NytSpil_Click"/>
+                <Button x:Name="nytSpilKnap" Content="Nyt Spil" Style="{DynamicResource Knapper}" Margin="0,53,565,0" VerticalAlignment="Top" Width="117" Click="NytSpil_Click" HorizontalAlignment="Right"/>
 
                 <Popup x:Name="PopUp" PlacementRectangle="25,20,30,50" Placement="Mouse" AllowsTransparency="True" StaysOpen="False" PopupAnimation="Fade" Margin="10,10,9.8,10.4">
                     <TextBox x:Name="tekstBoxPopUp" IsReadOnly="True" TextWrapping="Wrap" HorizontalContentAlignment="Center" FontSize="30"/>
                 </Popup>
-                <Label x:Name="antalSpilLBL" Content="Spil nr.:" Style="{StaticResource overskriftLable}" Margin="12,104,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="82"/>
-                <Label x:Name="antalSpilNrLBL" Content="1" Style="{StaticResource overskriftLable}" HorizontalContentAlignment="Left" Margin="92,104,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="83"/>
-                <Label x:Name="brugteTalLBL" Content="Opråbte tal:" Style="{StaticResource overskriftLable}" Margin="12,150,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="123"/>
-                <Label x:Name="brugteListStatusLBL" Content=" " HorizontalContentAlignment="Left" Style="{StaticResource overskriftLable}" Margin="133,150,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="42"/>
+                <Label x:Name="antalSpilLBL" Content="Spil nr.:" Style="{StaticResource overskriftLable}" Margin="0,104,600,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Right" Width="82"/>
+                <Label x:Name="antalSpilNrLBL" Content="1" Style="{StaticResource overskriftLable}" HorizontalContentAlignment="Left" Margin="0,104,519,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Right" Width="83"/>
+                <Label x:Name="brugteTalLBL" Content="Opråbte tal:" Style="{StaticResource overskriftLable}" Margin="0,150,559,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Right" Width="123"/>
+                <Label x:Name="brugteListStatusLBL" Content=" " HorizontalContentAlignment="Left" Style="{StaticResource overskriftLable}" Margin="0,150,519,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Right" Width="42"/>
             </Grid>
 
         </DockPanel>
