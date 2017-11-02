@@ -92,7 +92,7 @@ namespace Banko1 {
             talLabel.Content = talList[Value];
             brugteTalList.Add(talList[Value]);
 
-            foreach (UIElement ele in leftWithNumbers.Children) {
+            foreach (UIElement ele in gridForTal.Children) {
                 Label midlertidigLabel = null;
                 if (ele.GetType() == typeof(Label)) {
                     Label lablesITaltabel = (Label)ele;

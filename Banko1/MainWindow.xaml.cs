@@ -148,7 +148,7 @@ namespace Banko1 {
                 brugteTalList.Add(talList[Value]);
 
 
-                foreach (UIElement ele in leftWithNumbers.Children) {
+                foreach (UIElement ele in gridForTal.Children) {
                     Label midlertidigLabel = null;
                     if (ele.GetType() == typeof(Label)) {
                         Label lablesITaltabel = (Label)ele;
@@ -280,11 +280,13 @@ namespace Banko1 {
                 if (ele.GetType() == typeof(Label)) {
                     Label lbl = (Label)ele;
                     lbl.Style = (Style)(this.Resources["talLabelsStyle"]);
+                    lbl.Foreground = Brushes.White;
                 }
             }
         }
 
         internal void NytSpil() {
+            int hvilketSpil = antalSpil;
             Gemfil();
             talList.Clear();
 
@@ -294,7 +296,7 @@ namespace Banko1 {
 
             brugteTalList.Clear();
 
-            antalSpilNrLBL.Content = antalSpil+1;
+            antalSpilNrLBL.Content = hvilketSpil+1;
         }
 
 
