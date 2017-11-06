@@ -35,7 +35,7 @@ namespace Banko1 {
 
         private string path = @"C:\Banko";
         private String dato = DateTime.Now.ToString("dd.MM.yyy");
-        private String tid = DateTime.Now.ToString("HH:mm");
+        
 
         private Random rnd;
 
@@ -253,6 +253,7 @@ namespace Banko1 {
 
         internal void Gemfil() {
             StringBuilder builder = new StringBuilder();
+            String tid = DateTime.Now.ToString("HH:mm");
             string result = @"C:\Banko\" + dato + ".txt";
 
             brugteTalList.Sort();
