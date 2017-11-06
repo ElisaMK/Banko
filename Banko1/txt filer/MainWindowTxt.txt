@@ -1,7 +1,12 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,26 +20,42 @@ using System.Windows.Shapes;
 
 namespace Banko1 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainPage : Page {
+    public partial class MainWindow : Window {
         internal List<int> talList = new List<int>();
+        internal ObservableCollection<int> puljeList = new ObservableCollection<int>();
+        internal ObservableCollection<int> jackpotList = new ObservableCollection<int>();
 
-        public MainPage() {
+        public MainWindow() {
             InitializeComponent();
 
             TalListeGenerator();
 
             TalTilHvid();
+
+            puljeListBox.ItemsSource = puljeList;
+            jackpotListBox.ItemsSource = jackpotList;
         }
+
         internal void NyTal_Click(object sender, RoutedEventArgs e) {
             NytTal();
         }
 
         private void banko_Click(object sender, RoutedEventArgs e) {
+            puljeList.Add(Convert.ToInt32(talLabel.Content));
         }
 
         private void nytSpil_Click(object sender, RoutedEventArgs e) {
+            jackpotList.Add(Convert.ToInt32(talLabel.Content));
+
+            //Code to Restart WPF Application
+            //Start New Application Before Closing Current
+            Process.Start(Application.ResourceAssembly.Location);
+
+            //Close the Current
+            Application.Current.Shutdown();
+
         }
 
         internal void NytTal() {
@@ -74,5 +95,7 @@ namespace Banko1 {
                 }
             }
         }
+
+
     }
 }

@@ -1,0 +1,15 @@
+/*SaveFileDialog gemSpil = new SaveFileDialog();
+            gemSpil.Filter = "Text documents (.txt)|*.txt|All Files (*.*)|*.*";
+            gemSpil.FileName = dato.ToString();
+            gemSpil.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);*/
+
+
+
+
+
+
+			    if(File.Exists(gemSpil.FileName) == true) {
+                File.AppendAllText(gemSpil.FileName, builder.ToString() + Environment.NewLine);
+            }else if (gemSpil.ShowDialog() == true) {
+                File.WriteAllText(gemSpil.FileName, builder.ToString() + Environment.NewLine);
+            }

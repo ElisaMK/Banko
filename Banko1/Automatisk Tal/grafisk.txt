@@ -1,0 +1,23 @@
+                <Button x:Name="start" Content="Start" Style="{DynamicResource Knapper}" VerticalAlignment="Top" Visibility="{Binding Path= IsChecked, ElementName=skriftAutoRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,23,79.8,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Right" Click="start_Click"/>
+                <Button x:Name="pause" Content="Pause" Style="{DynamicResource Knapper}" VerticalAlignment="Top" Visibility="{Binding Path= IsChecked, ElementName=skriftAutoRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="0,88,79,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Right" Click="pause_Click"/>
+
+
+
+				        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+
+				            <Expander x:Name="topTilindstillinger" Visibility="Hidden" Header="Indstillinger" DockPanel.Dock="Top" Background="PowderBlue" VerticalAlignment="Top" Margin="0,0,16.2,0">
+                <Grid x:Name="stack" Height="89" Margin="12,0,7.6,0" VerticalAlignment="Top" Background="White">
+                    <Label x:Name="overskriftAutoManuel" Content="Vælg mellem:" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Height="26" Margin="0,10,0,0"/>
+                    <RadioButton x:Name="skriftManuelRadioButton" IsChecked="True" Content="Skift tal manuelt" GroupName="talSkiftMetode" HorizontalAlignment="Left" Margin="90,6,0,0" VerticalAlignment="Top" />
+                    <RadioButton x:Name="skriftAutoRadioButton" Visibility="Collapsed" Content="Automatisk skiftene tal" GroupName="talSkiftMetode" HorizontalAlignment="Left" Margin="90,25,0,0" VerticalAlignment="Top" />
+
+                    <Grid Margin="487,10,9.8,10" Visibility="{Binding Path= IsChecked, ElementName=skriftAutoRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}" >
+                        <TextBox x:Name="sekunderTextBox" Height="24" Text="2,5" TextAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top" Width="42" Margin="0,0,144.4,0"/>
+                        <Label x:Name="sekLable"  Content="sek." Margin="42,0,99.4,0" Height="24" VerticalAlignment="Top"/>
+
+                    </Grid>
+                </Grid>
+            </Expander>
+
+

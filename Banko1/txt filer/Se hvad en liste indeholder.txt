@@ -1,0 +1,10 @@
+        private void button_Click_1(object sender, RoutedEventArgs e) {
+            StringBuilder builder = new StringBuilder();
+
+
+            foreach (int str in talList) {
+                builder.Append(str.ToString()).AppendLine();
+            }
+            textBox.Text = builder.ToString();
+
+        }
