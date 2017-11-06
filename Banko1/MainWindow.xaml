@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Banko" 
         WindowState="Maximized"
-        WindowStyle="SingleBorderWindow"  Width="1534.4" Height="841.2">
+        WindowStyle="SingleBorderWindow" d:DesignWidth="1534.4" d:DesignHeight="841.2" >
 
     <Window.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
@@ -258,6 +258,7 @@
 
 
             <Grid x:Name="rightWithButtons" DockPanel.Dock="Right" Width="335" Margin="0,3.4,0,1">
+
                 <Border BorderBrush="Gainsboro" BorderThickness="1" Margin="0,1,9.8,2.6"/>
                 <Label x:Name="banko_overskrift" Content="BANKO" FontSize="30" Margin="0,1,9.8,0" VerticalAlignment="Top" Style="{StaticResource overskriftLable}" Height="55"/>
 
@@ -269,10 +270,10 @@
             </Grid>
 
 
-            <Grid x:Name="centerWithLifeNumber" Margin="1,4.4,1,1">
-                <Label x:Name="talLabel" Content=" " BorderBrush="Black" BorderThickness="5" Margin="199,23,0,0"
-                   Background="White" Padding="1" FontSize="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="238" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228"/>
-                <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NytTal" Visibility="{Binding Path= IsChecked, ElementName=skriftManuelRadioButton, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="254,280,0,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Left"/>
+            <Grid x:Name="centerWithLifeNumber" DockPanel.Dock="Right" Margin="1,4.4,1,1">
+                <Label x:Name="talLabel" Content=" " BorderBrush="Black" Background="Transparent" BorderThickness="5" Margin="199,23,0,0"
+                   Padding="1" FontSize="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="238" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228"/>
+                <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NytTal" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=skriftManuelRadioButton}" Margin="254,280,0,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Left"/>
                 <Button x:Name="seTilbage" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="205,216,0,0" VerticalAlignment="Top" Click="SeTilbage_Click" HorizontalAlignment="Left"/>
                 <Button x:Name="frem" Content="&#xE10D;" Style="{StaticResource PileKnapper}" Margin="382,216,0,0" VerticalAlignment="Top" Click="frem_Click" HorizontalAlignment="Left"/>
                 <Button x:Name="nytSpilKnap" Content="Nyt Spil" Style="{DynamicResource Knapper}" Margin="12,53,0,0" VerticalAlignment="Top" Width="117" Click="NytSpil_Click" HorizontalAlignment="Left"/>
