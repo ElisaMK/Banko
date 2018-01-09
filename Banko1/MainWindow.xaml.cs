@@ -262,6 +262,7 @@ namespace Banko1 {
         }
 
 
+
         //metoder til det bagvedlæggende
         internal void TalListeGenerator() {
             for (int i = 0; i < 91; i++) {
