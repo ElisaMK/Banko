@@ -119,11 +119,14 @@
                     <ListBox x:Name="puljeListBox" BorderBrush="Gainsboro" FontSize="20" HorizontalAlignment="Left" Height="229" Margin="536,49,0,0" VerticalAlignment="Top" Width="155"/>
                     <Button x:Name="PuljeSpil" Content="Pulje Spil" Style="{StaticResource PJSpilKnapper}" HorizontalAlignment="Left" Margin="696,76,0,0" VerticalAlignment="Top" Click="PuljeSpil_Click"/>
                     <Button x:Name="clearBTNPulje" Content="Clear" Style="{StaticResource PJSpilKnapper}" HorizontalAlignment="Left" Margin="616,245,0,0" VerticalAlignment="Top" Width="75" Click="clearBTNPulje_Click"/>
+                    <Button x:Name="fortrydBTNPulje" Content="Fortryd" Style="{StaticResource PJSpilKnapper}" Margin="696,245,0,0" VerticalAlignment="Top" Width="75" Click="fortrydBTNPulje_Click" HorizontalAlignment="Left"/>
+
 
                     <Label x:Name="jackPotTalHeader" Content="Jackpot tal" Style="{StaticResource overskriftLable}" Margin="125,10,0,0" Height="41" VerticalAlignment="Top" HorizontalAlignment="Left" Width="155" />
                     <ListBox x:Name="jackpotListBox" BorderBrush="Gainsboro" Height="228" FontSize="20" Margin="125,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="155"/>
                     <Button x:Name="jackPotSpil" Content="JackPot Spil" Style="{StaticResource PJSpilKnapper}" Margin="285,76,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.503,0.5" Click="jackPotSpil_Click"/>
                     <Button x:Name="clearBTNJackpot" Content="Clear" Style="{StaticResource PJSpilKnapper}" Margin="205,245,0,0" VerticalAlignment="Top" Width="75" Click="clearBTNJackpot_Click" HorizontalAlignment="Left"/>
+                    <Button x:Name="fortrydBTNJackpot" Content="Fortryd" Style="{StaticResource PJSpilKnapper}" Margin="285,245,0,0" VerticalAlignment="Top" Width="75" Click="fortrydBTNJackpot_Click" HorizontalAlignment="Left"/>
                 </Grid>
             </Expander>
 

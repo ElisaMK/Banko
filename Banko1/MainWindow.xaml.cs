@@ -28,10 +28,14 @@ namespace Banko1 {
     /// </summary>
     public partial class MainWindow : Window {
         internal List<int> talList = new List<int>();
+
         public ObservableCollection<int> puljeList = new ObservableCollection<int>();
+        internal List<int> backupPuljeList = new List<int>();
         internal ObservableCollection<int> jackpotList = new ObservableCollection<int>();
+        internal List<int> backupJackpotList = new List<int>();
+
         internal List<int> brugteTalList = new List<int>();
-        internal int antalSpil = 0;
+        internal int antalSpil = 1;
 
         private string path = @"C:\Banko";
         private String dato = DateTime.Now.ToString("dd.MM.yyy");
@@ -48,7 +52,6 @@ namespace Banko1 {
 
             puljeListBox.ItemsSource = puljeList;
             jackpotListBox.ItemsSource = jackpotList;
-           
         }
 
 
@@ -129,15 +132,11 @@ namespace Banko1 {
             PuljeSpilWindow pSWin = new PuljeSpilWindow();
             pSWin.windowPuljeSpilList = allePuljetal;
             pSWin.Show();
-
-            NytSpil();
         }
 
         private void jackPotSpil_Click(object sender, RoutedEventArgs e) {
             JackpotSpil jSWin = new JackpotSpil();
             jSWin.Show();
-
-            NytSpil();
         }
 
         internal void NytTal(object sender, EventArgs e) {//
@@ -233,25 +232,50 @@ namespace Banko1 {
 
         //Clear knapper
         private void clearBTNJackpot_Click(object sender, RoutedEventArgs e) {
+            foreach (int str in jackpotList) {
+                backupJackpotList.Add(str);
+            }
             jackpotList.Clear();
         }
 
+        private void fortrydBTNJackpot_Click(object sender, RoutedEventArgs e) { //bliver helt tom npr nyt spil
+            foreach (int str in backupJackpotList) {
+                jackpotList.Add(str);
+            }
+
+            backupJackpotList.Clear();
+        }
+
         private void clearBTNPulje_Click(object sender, RoutedEventArgs e) {
+            foreach (int str in puljeList) {
+                backupPuljeList.Add(str);
+            }
             puljeList.Clear();
+        }
+
+        private void fortrydBTNPulje_Click(object sender, RoutedEventArgs e) { //bliver helt tom npr nyt spil
+            foreach (int str in backupPuljeList) {
+                puljeList.Add(str);
+            }
+
+            backupPuljeList.Clear();
         }
 
 
         //metoder til det bagvedlæggende
-
-
         internal void TalListeGenerator() {
-            for (int i = 1; i < 91; i++) {
+            for (int i = 0; i < 91; i++) {
                 talList.Add(i);
             }
 
         }
 
         internal void Gemfil() {
+            //spil antallet
+            int spilNR = antalSpil;
+            int opråbteTal = brugteTalList.Count();
+
+            //resten af gemfil kode
             StringBuilder builder = new StringBuilder();
             String tid = DateTime.Now.ToString("HH:mm");
             string result = @"C:\Banko\" + dato + ".txt";
@@ -269,10 +293,10 @@ namespace Banko1 {
             //laver filen for i dag, og hvis den findes så putter den bare mere tekst i filen                
             if (!File.Exists(result)) {
                 antalSpil++;
-                File.WriteAllText(result, "Spil nr." + antalSpil + " kl." + tid + Environment.NewLine + builder.ToString() + Environment.NewLine);
+                File.WriteAllText(result, "Spil nr." + spilNR + " | kl." + tid + " | Antal opråbte tal: "+ opråbteTal + Environment.NewLine + builder.ToString() + Environment.NewLine);
             } else {
                 antalSpil++;
-                File.AppendAllText(result, "Spil nr." + antalSpil + " kl." + tid + Environment.NewLine + builder.ToString() + Environment.NewLine);
+                File.AppendAllText(result, "Spil nr." + spilNR + " | kl." + tid + " | Antal opråbte tal: " + opråbteTal + Environment.NewLine + builder.ToString() + Environment.NewLine);
             }
         }
 
@@ -296,13 +320,17 @@ namespace Banko1 {
             talLabel.Content = " ";
 
             brugteTalList.Clear();
+            //antal spil bliver vist efter nyt spil
+                antalSpilNrLBL.Content = hvilketSpil + 1;
 
-            antalSpilNrLBL.Content = hvilketSpil+1;
+            //furtryd clear
+            backupJackpotList.Clear();
+
+            backupPuljeList.Clear();
         }
 
 
         // popUp metoder
-
         public void ShowPopUp() {
             PopUp.IsOpen = true;
 

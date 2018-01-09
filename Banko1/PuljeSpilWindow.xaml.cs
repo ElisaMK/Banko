@@ -114,7 +114,7 @@ namespace Banko1 {
         }
 
         internal void TalListeGenerator() {
-            for (int i = 1; i < 91; i++) {
+            for (int i = 0; i < 91; i++) {
                 if (!windowPuljeSpilList.Contains(i)) {
                     talList.Add(i);
                 }
