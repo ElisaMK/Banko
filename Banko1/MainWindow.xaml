@@ -110,11 +110,8 @@
                 </MenuItem>
             </Menu>
 
-            <Expander x:Name="bottom" Header="Pulje- og Jackpot spil" DockPanel.Dock="Bottom" Margin="0,3,3,0" Background="PowderBlue" FontSize="15" IsExpanded="True" Height="375">
-                <Grid x:Name="puljeTal" Margin="12,0,8.2,0" Height="343" VerticalAlignment="Top" Background="White">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
+            <Expander x:Name="bottom" Header="Pulje- og Jackpot spil" DockPanel.Dock="Bottom" Margin="0,3,3,0" Background="PowderBlue" FontSize="15" IsExpanded="True">
+                <Grid x:Name="puljeTal" Margin="12,0,8.2,0" Height="290" VerticalAlignment="Top" Background="White">
                     <Label x:Name="puljeTalHeader" Content="Pulje tal" Style="{StaticResource overskriftLable}" HorizontalAlignment="Left" Margin="536,10,0,0" Width="155" VerticalAlignment="Top" Height="41" />
                     <ListBox x:Name="puljeListBox" BorderBrush="Gainsboro" FontSize="20" HorizontalAlignment="Left" Height="229" Margin="536,49,0,0" VerticalAlignment="Top" Width="155"/>
                     <Button x:Name="PuljeSpil" Content="Pulje Spil" FontSize="20" Style="{StaticResource PJSpilKnapper}" HorizontalAlignment="Left" Margin="696,76,0,0" VerticalAlignment="Top" Click="PuljeSpil_Click" Height="38"/>
@@ -131,7 +128,7 @@
             </Expander>
 
 
-            <Grid x:Name="leftWithNumbers" DockPanel.Dock="Left"  Width="520" Margin="1,3.4,1,-2">
+            <Grid x:Name="leftWithNumbers" DockPanel.Dock="Left" Width="520" Margin="1,3.4,1,-2">
                 <Border BorderBrush="Black" BorderThickness="1" Margin="10,10,0,10">
                     <Grid x:Name="gridForTal" Margin="0,0,0,0">
                         <Grid.RowDefinitions >
@@ -261,23 +258,23 @@
             </Grid>
 
 
-            <Grid x:Name="rightWithButtons" DockPanel.Dock="Right" Width="335" Margin="0,3.4,0,1">
+            <Grid x:Name="rightWithButtons" DockPanel.Dock="Right" Width="262" Margin="0,3.4,0,1.4">
 
                 <Border BorderBrush="Gainsboro" BorderThickness="1" Margin="0,1,9.8,2.6"/>
                 <Label x:Name="banko_overskrift" Content="BANKO" FontSize="30" Margin="0,1,9.8,0" VerticalAlignment="Top" Style="{StaticResource overskriftLable}" Height="55"/>
 
-                <Button x:Name="FuldFortrydKnap" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,177,208.8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="46" Click="FuldFortryd_Click"/>
-                <Button x:Name="rowFortrydKnap" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,92,208.8,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="46" Click="rowFortryd_Click"/>
+                <Button x:Name="FuldFortrydKnap" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,177,172,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="46" Click="FuldFortryd_Click"/>
+                <Button x:Name="rowFortrydKnap" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="0,92,172,0" VerticalAlignment="Top" HorizontalAlignment="Right" Height="46" Click="rowFortryd_Click"/>
 
-                <Button x:Name="banko" Content="Række" Style="{StaticResource Knapper}" Click="Række_Click" VerticalAlignment="Top" Margin="0,92,97,0" HorizontalAlignment="Right"/>
-                <Button x:Name="fuldPladeKnap" Content="Fuldplade" Style="{StaticResource Knapper}" Margin="0,177,97,0" VerticalAlignment="Top" Click="fuldPlade_Click" HorizontalAlignment="Right"/>
+                <Button x:Name="banko" Content="Række" Style="{StaticResource Knapper}" Click="Række_Click" VerticalAlignment="Top" Margin="0,92,61,0" HorizontalAlignment="Right"/>
+                <Button x:Name="fuldPladeKnap" Content="Fuldplade" Style="{StaticResource Knapper}" Margin="0,177,61,0" VerticalAlignment="Top" Click="fuldPlade_Click" HorizontalAlignment="Right"/>
             </Grid>
 
 
             <Grid x:Name="centerWithLifeNumber" DockPanel.Dock="Right" Margin="1,4.4,1,1">
                 <Label x:Name="talLabel" Content=" " BorderBrush="Black" Background="Transparent" BorderThickness="5" Margin="199,23,0,0"
                    Padding="1" FontSize="150" HorizontalContentAlignment="Center" VerticalContentAlignment="Top" Height="238" VerticalAlignment="Top" HorizontalAlignment="Left" Width="228"/>
-                <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NytTal" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=skriftManuelRadioButton}" Margin="254,280,0,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Left"/>
+                <Button x:Name="NyTalKnap" Content="Ny tal" Style="{DynamicResource Knapper}" VerticalAlignment="Top" IsDefault="True" Click="NytTal" Visibility="{Binding IsChecked, Converter={StaticResource BooleanToVisibilityConverter}, ElementName=skriftManuelRadioButton}" Margin="254,268,0,0" RenderTransformOrigin="0.603,0.552" Width="117" HorizontalAlignment="Left"/>
                 <Button x:Name="seTilbage" Content="&#xE10E;" Style="{StaticResource PileKnapper}" Margin="205,216,0,0" VerticalAlignment="Top" Click="SeTilbage_Click" HorizontalAlignment="Left"/>
                 <Button x:Name="frem" Content="&#xE10D;" Style="{StaticResource PileKnapper}" Margin="382,216,0,0" VerticalAlignment="Top" Click="frem_Click" HorizontalAlignment="Left"/>
                 <Button x:Name="nytSpilKnap" Content="Nyt Spil" Style="{DynamicResource Knapper}" Margin="12,53,0,0" VerticalAlignment="Top" Width="117" Click="NytSpil_Click" HorizontalAlignment="Left"/>
