@@ -92,9 +92,9 @@
     <Compile Include="PuljeSpilWindow.xaml.cs">
       <DependentUpon>PuljeSpilWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sleeper.cs" />
-    <Compile Include="Tal.cs" />
-    <Compile Include="txt filer\Program.cs" />
+    <Compile Include="Filer\Sleeper.cs" />
+    <Compile Include="Filer\Tal.cs" />
+    <Compile Include="Filer\txt filer\Program.cs" />
     <Page Include="JackpotSpil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -159,28 +159,31 @@
     <Resource Include="bankoplade_ewx_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Automatisk Tal\grafisk.txt" />
+    <Resource Include="Filer\Automatisk Tal\grafisk.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Automatisk Tal\Metoder.txt" />
+    <Resource Include="Filer\Automatisk Tal\Metoder.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\file dialog.txt" />
+    <Resource Include="Filer\txt filer\file dialog.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\General.txt" />
+    <Resource Include="Filer\txt filer\General.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\Se hvad en liste indeholder.txt" />
+    <Resource Include="Filer\txt filer\Se hvad en liste indeholder.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\TådeEksemple.txt" />
+    <Resource Include="Filer\txt filer\TådeEksemple.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\MainWindow.txt" />
+    <Resource Include="Filer\txt filer\MainWindow.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\MainWindowTxt.txt" />
+    <Resource Include="Filer\txt filer\MainWindowTxt.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Image\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
