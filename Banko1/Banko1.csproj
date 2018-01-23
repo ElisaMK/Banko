@@ -63,7 +63,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>bankoplade_ewx_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Image\Logo\bankoplade_ewx_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -86,20 +86,20 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="JackpotSpil.xaml.cs">
+    <Compile Include="Windows\JackpotSpil.xaml.cs">
       <DependentUpon>JackpotSpil.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PuljeSpilWindow.xaml.cs">
+    <Compile Include="Windows\PuljeSpilWindow.xaml.cs">
       <DependentUpon>PuljeSpilWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Sleeper.cs" />
-    <Compile Include="Tal.cs" />
-    <Compile Include="txt filer\Program.cs" />
-    <Page Include="JackpotSpil.xaml">
+    <Compile Include="Filer\Test Classes\Sleeper.cs" />
+    <Compile Include="Filer\Test Classes\Tal.cs" />
+    <Compile Include="Filer\txt filer\Program.cs" />
+    <Page Include="Windows\JackpotSpil.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -107,11 +107,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PuljeSpilWindow.xaml">
+    <Page Include="Windows\PuljeSpilWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -156,32 +156,33 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="bankoplade_ewx_icon.ico" />
+    <Resource Include="Image\Logo\bankoplade_ewx_icon.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Automatisk Tal\grafisk.txt" />
+    <Resource Include="Filer\Automatisk Tal\grafisk.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Automatisk Tal\Metoder.txt" />
+    <Resource Include="Filer\Automatisk Tal\Metoder.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\file dialog.txt" />
+    <Resource Include="Filer\txt filer\file dialog.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\General.txt" />
+    <Resource Include="Filer\txt filer\General.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\Se hvad en liste indeholder.txt" />
+    <Resource Include="Filer\txt filer\Se hvad en liste indeholder.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\TådeEksemple.txt" />
+    <Resource Include="Filer\txt filer\TådeEksemple.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\MainWindow.txt" />
+    <Resource Include="Filer\txt filer\MainWindow.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="txt filer\MainWindowTxt.txt" />
+    <Resource Include="Filer\txt filer\MainWindowTxt.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
