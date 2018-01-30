@@ -21,7 +21,6 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-
 namespace Banko1 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
